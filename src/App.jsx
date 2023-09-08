@@ -1,49 +1,45 @@
 import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 import './App.css';
-import { Button, ChakraProvider, Link } from '@chakra-ui/react';
-import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+import { Button, ChakraProvider, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import theme from './theme';
-
-// might want to add remark-gfm library -- it works with task lists in markdown
-
-// todo:
-
-// - make new markdown component w theme
-// - add form
-//    - how many people
-//    - dietary restrictions
-//    - existing ingredients
-
-const newTheme = {
-  a: (props) => {
-    const { children, href } = props;
-    return (
-      <Link color="blue" fontWeight={theme.fontWeights.bold} href={href} mb={2} fontSize="12px">
-        {children}
-      </Link>
-    );
-  },
-};
+import ResponseMarkdown from './molecules/ResponseMarkdown';
+import Spinner from './atoms/Spinner';
 
 const App = () => {
-  // const defaultPrompt1 =
-  //   '4 people, 3 meals a day per person, dietary restrictions: [sugar free, vegetarian], budget: $65';
-  const defaultPrompt2 =
-    "4 people, dietary_restrictions: ['vegetarian', 'nut allergy'], existing_ingredients: ['olive oil', 'salt', 'black pepper']";
+  const userInput = `{ 
+    "cuisine_type": "null",
+    "dietary_restrictions": "[]", 
+    "existing_ingredients": "['olive oil', 'salt', 'black pepper']",
+    "meals": "['breakfast', 'lunch', 'dinner']",
+    "person_count": "4", 
+    "servings_per_person_per_day": "1"
+  }`;
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const submitPrompts = async (prompt) => {
-    const resp = await axios({
-      method: 'post',
-      url: 'http://localhost:3001/chat',
-      data: { prompt },
-    })
-      .then(({ data }) => data)
-      .catch((error) => console.log(error));
-    setResponse(resp.message);
+    const resp = await axios
+      .post(
+        `${process.env.REACT_APP_SERVER_URL}/chat`,
+        { prompt },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+          },
+        }
+      )
+      .then(({ data }) => data.response)
+      .catch((err) => {
+        setError('Something went wrong. :(');
+        // eslint-disable-next-line no-console
+        console.log(err);
+      });
+    if (resp) {
+      setResponse(resp);
+    }
   };
 
   useEffect(() => {
@@ -57,21 +53,16 @@ const App = () => {
       <div>
         <Button
           onClick={async () => {
-            await submitPrompts(defaultPrompt2);
+            setResponse(null);
+            setLoading(true);
+            await submitPrompts(userInput);
           }}
         >
           Click for meals
         </Button>
-        {loading && (
-          <ReactMarkdown components={ChakraUIRenderer()} skipHtml>
-            # loading
-          </ReactMarkdown>
-        )}
-        {!!response && !loading && (
-          <ReactMarkdown components={ChakraUIRenderer(newTheme)} skipHtml>
-            {response}
-          </ReactMarkdown>
-        )}
+        {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
+        {loading && <Spinner />}
+        {!!response && loading === false && <ResponseMarkdown response={response} />}
       </div>
     </ChakraProvider>
   );
