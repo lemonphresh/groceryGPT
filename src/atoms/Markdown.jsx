@@ -13,7 +13,7 @@ const Markdown = ({ children, customTheme }) => (
 export default Markdown;
 
 Markdown.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.arrayOf([PropTypes.node])]),
   customTheme: PropTypes.any,
 };
 

@@ -24,6 +24,7 @@ def completionPrompt2():
     # I will not consider case sensitivity when looking at the <existing_ingredients> to exclude.
 
     # I will provide the client with a detailed answer using markdown syntax used in the example response below.
+    # I will not stray from the template below.
 
     "
     ### Meal Plan

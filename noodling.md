@@ -8,6 +8,7 @@
 
 ### code ideas:
 
+- might want to add storybook because testing components sucks rn
 - might want to add `remark-gfm` library -- it works with task lists in markdown
 
 ### product ideas:

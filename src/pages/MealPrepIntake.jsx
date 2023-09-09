@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import { Button, ChakraProvider, Text } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 import axios from 'axios';
-import theme from './theme';
-import ResponseMarkdown from './molecules/ResponseMarkdown';
-import Spinner from './atoms/Spinner';
+import theme from '../theme';
+import ResponseMarkdown from '../molecules/ResponseMarkdown';
+import { Button, Spinner } from '../atoms';
+import { MealPrepIntakeForm } from '../organisms';
+import { MealPrepIntakeFormContextProvider } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
 
 const App = () => {
   const userInput = `{ 
@@ -49,22 +50,20 @@ const App = () => {
   }, [response]);
 
   return (
-    <ChakraProvider theme={theme} initialColorMode={theme.config.initialColorMode}>
-      <div>
-        <Button
-          onClick={async () => {
-            setResponse(null);
-            setLoading(true);
-            await submitPrompts(userInput);
-          }}
-        >
-          Click for meals
-        </Button>
-        {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
-        {loading && <Spinner />}
-        {!!response && loading === false && <ResponseMarkdown response={response} />}
-      </div>
-    </ChakraProvider>
+    <MealPrepIntakeFormContextProvider>
+      <MealPrepIntakeForm />
+      <Button
+        onClick={async () => {
+          setResponse(null);
+          setLoading(true);
+          await submitPrompts(userInput);
+        }}
+        text="Click for meals"
+      />
+      {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
+      {loading && <Spinner />}
+      {!!response && loading === false && <ResponseMarkdown response={response} />}
+    </MealPrepIntakeFormContextProvider>
   );
 };
 
