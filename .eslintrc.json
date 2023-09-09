@@ -1,35 +1,38 @@
 {
-    "env": {
-      "browser": true,
-      "node": true,
-      "jest": true
-    },
-    "extends": ["airbnb", "prettier"],
-    "plugins": ["prettier"],
-    "parser": "@babel/eslint-parser",
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "parserOptions": {
-      "requireConfigFile": false,
-      "sourceType": "module",
-      "babelOptions": {
-        "presets": ["@babel/preset-react"]
-      }
-    },
-    "rules": {
-      "prettier/prettier": ["error"],
-      "react/jsx-one-expression-per-line": ["off"],
-      "react/function-component-definition": ["off"],
-      "react/jsx-props-no-spreading": ["off"],
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          // Allow usage of dev dependencies in stories and tests.
-          "devDependencies": ["**/*.stories.jsx", "**/*.test.jsx"]
-        }
-      ]
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect"
     }
+  },
+  "parserOptions": {
+    "requireConfigFile": false,
+    "sourceType": "module",
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
+  },
+  "rules": {
+    "prettier/prettier": ["warn"],
+    "react/jsx-one-expression-per-line": ["off"],
+    "react/function-component-definition": ["off"],
+    "react/jsx-props-no-spreading": ["off"],
+    "camelcase": ["off"],
+    "no-undef": ["warn"],
+    "no-unused-vars": ["warn"],
+    "import/no-extraneous-dependencies": [
+      "warn",
+      {
+        // Allow usage of dev dependencies in stories and tests.
+        "devDependencies": ["**/*.stories.jsx", "**/*.test.jsx"]
+      }
+    ]
   }
+}

@@ -1,4 +1,4 @@
-import { HStack, useRadioGroup } from '@chakra-ui/react';
+import { Flex, useRadioGroup } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuid4 } from 'uuid';
@@ -15,7 +15,15 @@ const RadioButtonGroup = ({ buttons, onChange, selectedBackgroundColor, selected
   const group = getRootProps();
 
   return (
-    <HStack overflow="scroll" maxWidth="100%" {...group}>
+    <Flex
+      alignItems="center"
+      flexWrap="wrap"
+      gridGap="20px"
+      justifyContent="center"
+      maxWidth="100%"
+      width="100%"
+      {...group}
+    >
       {buttons.map((button) => (
         <RadioButton
           key={uuid4()}
@@ -24,7 +32,7 @@ const RadioButtonGroup = ({ buttons, onChange, selectedBackgroundColor, selected
           {...getRadioProps({ value: button.value })}
         />
       ))}
-    </HStack>
+    </Flex>
   );
 };
 

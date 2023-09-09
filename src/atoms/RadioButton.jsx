@@ -3,23 +3,15 @@ import PropTypes from 'prop-types';
 import { Box, useRadio } from '@chakra-ui/react';
 import theme from '../theme';
 
-const RadioButton = ({
-  checked,
-  checkedBackgroundColor,
-  onClick,
-  rounded,
-  textColor,
-  text,
-  ...props
-}) => {
+const RadioButton = ({ checkedBackgroundColor, onClick, rounded, textColor, text, ...props }) => {
   const borderRadius = rounded ? '18px' : '10px';
   const { getInputProps, getCheckboxProps } = useRadio(props);
   const input = getInputProps();
   const checkbox = getCheckboxProps();
 
   return (
-    <Box as="label">
-      <input {...input} />
+    <Box as="label" cursor="pointer">
+      <input {...input} hidden />
       <Box
         backgroundColor={theme.colors.gray['300']}
         borderRadius={borderRadius}
@@ -37,7 +29,6 @@ const RadioButton = ({
 export default RadioButton;
 
 RadioButton.propTypes = {
-  checked: PropTypes.bool,
   checkedBackgroundColor: PropTypes.string,
   onClick: PropTypes.func,
   rounded: PropTypes.bool,
@@ -46,7 +37,6 @@ RadioButton.propTypes = {
 };
 
 RadioButton.defaultProps = {
-  checked: false,
   checkedBackgroundColor: theme.colors.green['300'],
   onClick: () => {},
   rounded: false,

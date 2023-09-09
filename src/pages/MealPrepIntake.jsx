@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import theme from '../theme';
 import ResponseMarkdown from '../molecules/ResponseMarkdown';
@@ -51,18 +51,20 @@ const App = () => {
 
   return (
     <MealPrepIntakeFormContextProvider>
-      <MealPrepIntakeForm />
-      <Button
-        onClick={async () => {
-          setResponse(null);
-          setLoading(true);
-          await submitPrompts(userInput);
-        }}
-        text="Click for meals"
-      />
-      {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
-      {loading && <Spinner />}
-      {!!response && loading === false && <ResponseMarkdown response={response} />}
+      <Flex flexDirection="column">
+        <MealPrepIntakeForm />
+        <Button
+          onClick={async () => {
+            setResponse(null);
+            setLoading(true);
+            await submitPrompts(userInput);
+          }}
+          text="Click for meals"
+        />
+        {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
+        {loading && <Spinner />}
+        {!!response && loading === false && <ResponseMarkdown response={response} />}
+      </Flex>
     </MealPrepIntakeFormContextProvider>
   );
 };

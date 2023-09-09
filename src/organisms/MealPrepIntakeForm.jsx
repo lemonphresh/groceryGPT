@@ -1,6 +1,8 @@
 import React from 'react';
+import { Flex } from '@chakra-ui/react';
 import { RadioButtonGroup } from '../molecules';
 import { useMealPrepIntakeValues } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
+import CheckboxButtonGroup from '../molecules/CheckboxButtonGroup';
 
 // it'll have:
 //    - number of people input
@@ -14,37 +16,35 @@ const MealPrepIntakeForm = () => {
   const { mealPrepIntakeFormValues, setMealPrepIntakeFormValues, formData } =
     useMealPrepIntakeValues();
 
-  const onChangeRadioButton = (category) => (value) => {
+  const handleOnChange = (category) => (value) => {
     setMealPrepIntakeFormValues({
+      ...mealPrepIntakeFormValues,
       [category]: value,
     });
   };
 
-  //   const onChangeCheckboxButton = (category) => (value) => {
-  //     const idx = mealPrepIntakeFormValues[category].indexOf(value);
-  //     const valueExists = idx > -1;
-
-  //     if (valueExists) {
-  //       setMealPrepIntakeFormValues(mealPrepIntakeFormValues.splice(idx, 1));
-  //     } else {
-  //       setMealPrepIntakeFormValues({
-  //         [category]: [...mealPrepIntakeFormValues[category], value],
-  //       });
-  //     }
-  //   };
-
-  console.log(mealPrepIntakeFormValues);
-
   return (
-    <div>
+    <Flex alignItems="center" flexDirection="column" justifyContent="center" paddingX="64px">
       meal prep intake
       <RadioButtonGroup
         buttons={formData.cuisine.map((cuisine) => ({
           ...cuisine,
         }))}
-        onChange={onChangeRadioButton('cuisine')}
+        onChange={handleOnChange('cuisine')}
       />
-    </div>
+      <CheckboxButtonGroup
+        buttons={formData.meals.map((meals) => ({
+          ...meals,
+        }))}
+        onChange={handleOnChange('meals')}
+      />
+      <CheckboxButtonGroup
+        buttons={formData.dietary_restrictions.map((dietary_restrictions) => ({
+          ...dietary_restrictions,
+        }))}
+        onChange={handleOnChange('dietary_restrictions')}
+      />
+    </Flex>
   );
 };
 

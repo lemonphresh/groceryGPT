@@ -11,7 +11,7 @@ const MealPrepIntakeFormContext = createContext(defaultMealPrepIntakeFormState);
 
 export const MealPrepIntakeFormContextProvider = ({ children }) => {
   const defaultValues = {
-    cuisine_type: null,
+    cuisine: null,
     dietary_restrictions: [],
     existing_ingredients: [],
     meals: [],
