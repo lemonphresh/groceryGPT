@@ -1,6 +1,6 @@
 ## Get Started
 
-Run `npm i` and `pipenv install`.
+Run `npm i`.
 
 ## Available Scripts
 
