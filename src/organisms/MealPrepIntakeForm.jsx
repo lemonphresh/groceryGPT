@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Image } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import { NumberInputWithLabel, RadioButtonGroup } from '../molecules';
 import { useMealPrepIntakeValues } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
@@ -8,6 +8,8 @@ import KeywordInputForm from '../molecules/KeywordInputForm';
 import { Button } from '../atoms';
 import CuttingBoard from '../assets/cuttingboard.jpeg';
 import theme from '../theme';
+import Rosemary from '../assets/rosemary.png';
+import WoodenSpoon from '../assets/woodenspoon.png';
 
 // eslint-disable-next-line react/prop-types
 const FormSection = ({ children }) => (
@@ -53,13 +55,43 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
       marginY="24px"
       maxWidth={['100%', '95vw', '90vw']}
       padding={['16px', '24px', '40px', '64px']}
+      position="relative"
     >
+      <Image
+        alt="A sprig of rosemary"
+        display={['none', 'block', 'block', 'block']}
+        filter="drop-shadow(-5px 4px 8px rgba(0, 0, 0, 0.5))"
+        left={['-275px', '-375px', '-400px', '-450px']}
+        maxWidth={['100%', '95vw', '800px']}
+        paddingX={['16px', '24px', '40px', '64px']}
+        pointerEvents="none"
+        position="absolute"
+        top="20px"
+        transform="rotate(116deg)"
+        src={Rosemary}
+        width="100%"
+      />
+      <Image
+        alt="Wooden spoon"
+        bottom="175px"
+        display={['none', 'block', 'block', 'block']}
+        filter="drop-shadow(-5px 4px 8px rgba(0, 0, 0, 0.5))"
+        marginTop={['64px', '64px', '32px', '48px']}
+        maxWidth={['100%', '95vw', '1000px']}
+        paddingX={['16px', '24px', '40px', '64px']}
+        pointerEvents="none"
+        position="absolute"
+        right={['-275px', '-375px', '-400px', '-450px']}
+        src={WoodenSpoon}
+        transform={['rotate(-100deg)', 'rotate(-100deg)', 'rotate(-90deg)']}
+        width="100%"
+      />
       <Flex
         alignItems="center"
         backgroundColor="#ffffff8C"
         flexDirection="column"
         justifyContent="center"
-        maxWidth="600px"
+        maxWidth={['600px', '800px']}
         padding={['12px', '16px', '24px']}
         width="100%"
       >
@@ -163,7 +195,7 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
           justifyContent="center"
           marginTop="32px"
           padding="8px"
-          width={['100%', '80%']}
+          width={['100%', '100%', '80%']}
         >
           <NumberInputWithLabel
             labelText="Cooking for how many: "

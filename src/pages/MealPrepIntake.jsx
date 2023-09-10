@@ -4,8 +4,7 @@ import axios from 'axios';
 import theme from '../theme';
 import { MealPrepIntakeForm, MealPrepResponse } from '../organisms';
 import { MealPrepIntakeFormContextProvider } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
-import WoodenSpoon from '../assets/woodenspoon.png';
-import CrackedEgg from '../assets/cracked_egg.png';
+import Egg from '../assets/friedegg.png';
 
 const App = () => {
   const [response, setResponse] = useState();
@@ -54,6 +53,7 @@ const App = () => {
         flexDirection="column"
         justifyContent="center"
         marginTop={['0px', '24px']}
+        overflow="hidden"
       >
         <Flex
           borderLeft={['none', `6px solid ${theme.colors.blue['200']}`]}
@@ -78,25 +78,17 @@ const App = () => {
         </Flex>
         <MealPrepIntakeForm onSubmit={handleSubmit} />
         <MealPrepResponse error={error} loading={loading} response={response} />
-        <Image
-          alt="Wooden spoon"
-          filter="drop-shadow(-5px 4px 8px rgba(0, 0, 0, 0.5))"
-          marginY="64px"
-          maxWidth={['100%', '95vw', '1000px']}
-          paddingX={['16px', '24px', '40px', '64px']}
-          src={WoodenSpoon}
-          width="100%"
-        />
         <Flex
           alignItems="center"
-          flexDirection={['column-reverse', 'row']}
+          flexDirection={['column-reverse', 'column-reverse', 'row', 'row']}
           maxWidth={['100%', '95vw', '1000px']}
           paddingX={['16px', '24px', '40px', '64px']}
         >
           <Image
-            alt="A cracked egg with the egg white and yolk spilling out."
-            height="150px"
-            src={CrackedEgg}
+            alt="A sunny-side-up egg with gorgeous crispy edges and a rich yellow yolk."
+            filter="drop-shadow(-2px 3px 8px rgba(0, 0, 0, 0.3))"
+            src={Egg}
+            width={['200px', '275px', '325px']}
           />
           <Heading
             alignItems="center"
@@ -104,12 +96,13 @@ const App = () => {
             fontWeight="normal"
             fontSize="18px"
             justifyContent="center"
-            marginY={['24px', 'auto']}
+            marginLeft={['0px', '0px', '24px', '24px']}
+            marginY={['48px', '48px', 'auto', 'auto']}
             size="md"
           >
-            <span style={{ fontWeight: 'bold' }}>Disclaimer:</span> the robots do not always obey.
-            Please try again if the response seems a little goofy. If they are being particularly
-            unruly,{' '}
+            <span style={{ fontWeight: 'bold' }}>Disclaimer:</span> the robots do not always like to
+            obey. Please try again if the response seems a little goofy. If they are being
+            particularly unruly,{' '}
             <Link color={theme.colors.blue[400]} href="mailto:lemon.tsx@gmail.com">
               contact me
             </Link>
