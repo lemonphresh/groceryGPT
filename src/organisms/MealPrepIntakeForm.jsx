@@ -1,19 +1,13 @@
 import React from 'react';
 import { Flex } from '@chakra-ui/react';
+import PropTypes from 'prop-types';
 import { NumberInputWithLabel, RadioButtonGroup } from '../molecules';
 import { useMealPrepIntakeValues } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
 import CheckboxButtonGroup from '../molecules/CheckboxButtonGroup';
 import KeywordInputForm from '../molecules/KeywordInputForm';
+import { Button } from '../atoms';
 
-// it'll have:
-//    x number of people input
-//    x number of servings per day input
-//    x meal types input
-//    x cuisine type input
-//    x dietary restrictions
-//    x existing ingredients
-//    - submit button
-const MealPrepIntakeForm = () => {
+const MealPrepIntakeForm = ({ onSubmit }) => {
   const { mealPrepIntakeFormValues, setMealPrepIntakeFormValues, formData } =
     useMealPrepIntakeValues();
 
@@ -59,6 +53,9 @@ const MealPrepIntakeForm = () => {
             ...meals,
           }))}
           onChange={handleOnChange('meals')}
+          selectedButtons={formData.meals.map((meals) => ({
+            ...meals,
+          }))}
         />
         <CheckboxButtonGroup
           buttons={formData.dietary_restrictions.map((dietary_restrictions) => ({
@@ -89,9 +86,24 @@ const MealPrepIntakeForm = () => {
             value={mealPrepIntakeFormValues.servings_per_person_per_day}
           />
         </Flex>
+
+        <Button
+          onClick={async () => {
+            await onSubmit(JSON.stringify(mealPrepIntakeFormValues));
+          }}
+          text="Click for meals"
+        />
       </Flex>
     </Flex>
   );
 };
 
 export default MealPrepIntakeForm;
+
+MealPrepIntakeForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
+
+MealPrepIntakeForm.defaultProps = {
+  onSubmit: () => {},
+};

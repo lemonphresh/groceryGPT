@@ -27,7 +27,6 @@ export default CheckboxButtonGroup;
 CheckboxButtonGroup.propTypes = {
   buttons: PropTypes.arrayOf(
     PropTypes.shape({
-      onClick: PropTypes.func,
       selected: PropTypes.bool,
       text: PropTypes.string,
       value: PropTypes.string,
@@ -36,7 +35,6 @@ CheckboxButtonGroup.propTypes = {
   onChange: PropTypes.func,
   selectedButtons: PropTypes.arrayOf(
     PropTypes.shape({
-      onClick: PropTypes.func,
       selected: PropTypes.bool,
       text: PropTypes.string,
       value: PropTypes.string,

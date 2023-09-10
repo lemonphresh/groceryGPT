@@ -41,7 +41,6 @@ export default RadioButtonGroup;
 RadioButtonGroup.propTypes = {
   buttons: PropTypes.arrayOf(
     PropTypes.shape({
-      onClick: PropTypes.func,
       selected: PropTypes.bool,
       text: PropTypes.string,
       value: PropTypes.string,
@@ -50,7 +49,6 @@ RadioButtonGroup.propTypes = {
   onChange: PropTypes.func,
   selectedBackgroundColor: PropTypes.string,
   selectedButton: PropTypes.shape({
-    onClick: PropTypes.func,
     selected: PropTypes.bool,
     text: PropTypes.string,
     value: PropTypes.string,

@@ -3,24 +3,18 @@ import { Flex, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import theme from '../theme';
 import ResponseMarkdown from '../molecules/ResponseMarkdown';
-import { Button, Spinner } from '../atoms';
+import { Spinner } from '../atoms';
 import { MealPrepIntakeForm } from '../organisms';
 import { MealPrepIntakeFormContextProvider } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
 
 const App = () => {
-  const userInput = `{ 
-    "cuisine_type": "null",
-    "dietary_restrictions": "[]", 
-    "existing_ingredients": "['olive oil', 'salt', 'black pepper']",
-    "meals": "['breakfast', 'lunch', 'dinner']",
-    "person_count": "4", 
-    "servings_per_person_per_day": "1"
-  }`;
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
   const submitPrompts = async (prompt) => {
+    setResponse(null);
+    setLoading(true);
     const resp = await axios
       .post(
         `${process.env.REACT_APP_SERVER_URL}/chat`,
@@ -52,15 +46,7 @@ const App = () => {
   return (
     <MealPrepIntakeFormContextProvider>
       <Flex flexDirection="column">
-        <MealPrepIntakeForm />
-        <Button
-          onClick={async () => {
-            setResponse(null);
-            setLoading(true);
-            await submitPrompts(userInput);
-          }}
-          text="Click for meals"
-        />
+        <MealPrepIntakeForm onSubmit={submitPrompts} />
         {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
         {loading && <Spinner />}
         {!!response && loading === false && <ResponseMarkdown response={response} />}

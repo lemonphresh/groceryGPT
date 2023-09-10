@@ -6,7 +6,6 @@ import {
   NumberInputStepper,
 } from '@chakra-ui/react';
 import React from 'react';
-import { v4 as uuid4 } from 'uuid';
 import PropTypes from 'prop-types';
 
 const NumberInput = ({ labelledBy, onChange, value, width }) => (
