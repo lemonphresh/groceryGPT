@@ -7,6 +7,7 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 import PropTypes from 'prop-types';
+import theme from '../theme';
 
 const NumberInput = ({ labelledBy, onChange, value, width }) => (
   <ChakraNumberInput
@@ -18,10 +19,10 @@ const NumberInput = ({ labelledBy, onChange, value, width }) => (
     size="lg"
     width={width}
   >
-    <NumberInputField />
+    <NumberInputField backgroundColor={theme.colors.orange[50]} />
     <NumberInputStepper>
-      <NumberIncrementStepper />
-      <NumberDecrementStepper />
+      <NumberIncrementStepper backgroundColor={theme.colors.orange[100]} />
+      <NumberDecrementStepper backgroundColor={theme.colors.orange[100]} />
     </NumberInputStepper>
   </ChakraNumberInput>
 );

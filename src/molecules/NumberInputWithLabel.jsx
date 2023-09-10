@@ -7,8 +7,10 @@ import { NumberInput } from '../atoms';
 const NumberInputWithLabel = ({ labelText, onChange, value }) => {
   const labelId = uuid4();
   return (
-    <Flex alignItems="center">
-      <FormLabel id={labelId}>{labelText}</FormLabel>
+    <Flex alignItems="center" justifyContent="space-between" padding="8px" width="100%">
+      <FormLabel fontWeight="bold" id={labelId} maxWidth={['130px', '250px', '275px', '500px']}>
+        {labelText}
+      </FormLabel>
       <NumberInput labelledBy={labelId} onChange={onChange} value={value} />
     </Flex>
   );

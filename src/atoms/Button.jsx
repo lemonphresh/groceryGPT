@@ -12,6 +12,10 @@ const Button = ({ backgroundColor, onClick, rounded, textColor, text, ...props }
       borderRadius={borderRadius}
       color={textColor}
       onClick={onClick}
+      _hover={{
+        backgroundColor: theme.colors.gray[50],
+        color: theme.colors.gray[600],
+      }}
       {...props}
     >
       {text}

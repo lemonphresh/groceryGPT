@@ -14,14 +14,20 @@ const RadioButton = ({ onClick, rounded, selectedBackgroundColor, textColor, tex
       <input {...input} hidden />
       <Flex
         alignItems="center"
-        backgroundColor={theme.colors.gray['300']}
+        backgroundColor={theme.colors.orange['50']}
         borderRadius={borderRadius}
+        boxShadow="2px 1px 1px 0px rgba(0, 0, 0, 0.3)"
         color={textColor}
         justifyContent="center"
         minWidth="54px"
         padding="8px"
         {...checkbox}
-        _checked={{ backgroundColor: selectedBackgroundColor }}
+        _checked={{
+          backgroundColor: selectedBackgroundColor,
+          boxShadow: '3px 2px 3px 0px rgba(0, 0, 0, 0.3)',
+          color: theme.colors.white,
+          fontWeight: 'bold',
+        }}
       >
         {text}
       </Flex>
@@ -44,5 +50,5 @@ RadioButton.defaultProps = {
   rounded: false,
   selectedBackgroundColor: theme.colors.green['500'],
   text: 'Button Text',
-  textColor: theme.colors.white,
+  textColor: theme.colors.gray['600'],
 };

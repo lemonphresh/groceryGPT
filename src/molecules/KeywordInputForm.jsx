@@ -1,5 +1,5 @@
 import { Flex, Input, Text } from '@chakra-ui/react';
-import { PlusSquareIcon } from '@chakra-ui/icons';
+import { InfoIcon, PlusSquareIcon } from '@chakra-ui/icons';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import theme from '../theme';
@@ -54,10 +54,10 @@ const KeywordInputForm = ({
         alignItems="center"
         borderRadius="8px"
         justifyContent="space-between"
-        marginTop="8px"
         padding={isTextFocused ? '7px' : '8px'}
       >
         <Input
+          backgroundColor={theme.colors.orange[50]}
           maxLength={100}
           onBlur={() => {
             setIsTextFocused(false);
@@ -86,6 +86,11 @@ const KeywordInputForm = ({
               : theme.colors.gray[200]
           }
           borderRadius="6px"
+          boxShadow={
+            addIconColor !== theme.colors.gray[500]
+              ? '3px 2px 8px 0px rgba(0, 0, 0, 0.3)'
+              : '2px 1px 2px 0px rgba(0, 0, 0, 0.1)'
+          }
           css={`
             cursor: ${textValue ? 'pointer' : 'not-allowed'};
           `}
@@ -98,11 +103,20 @@ const KeywordInputForm = ({
           <PlusSquareIcon boxSize={6} color={addIconColor} />
         </Flex>
       </Flex>
-      <Text color={theme.colors.black} fontSize="14px" marginLeft="8px">
-        {helperText}
-      </Text>
+      <Flex alignItems="center" marginX="16px">
+        <InfoIcon
+          alignSelf={['flex-start', undefined]}
+          color={theme.colors.gray[500]}
+          marginTop={['4px', undefined]}
+          height="14px"
+          width="14px"
+        />
+        <Text color={theme.colors.gray[600]} fontSize="14px" marginLeft="8px">
+          {helperText}
+        </Text>
+      </Flex>
 
-      <Flex maxWidth="500px">
+      <Flex maxWidth="500px" paddingX="8px">
         <KeywordChips keywords={keywords} onClickClose={onClearChip} />
       </Flex>
     </Flex>

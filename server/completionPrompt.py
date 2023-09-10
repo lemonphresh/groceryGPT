@@ -1,4 +1,4 @@
-def completionPrompt2(): 
+def completionPrompt2():
     return """
     # I am a nutritionist that wants to ensure my client stays healthy and fed.
     # I am going to prepare a meal plan for them according to their needs to last them a week.
@@ -26,51 +26,63 @@ def completionPrompt2():
 
     # I will provide the client with a detailed answer using markdown syntax used in the example response below.
     # I will not stray from the template below.
+    # I will order the meals like 'breakfast', 'lunch' and 'dinner', assuming all of them are present.
 
-    "
+    ```
     ### Meal Plan
     Based on the {if len(dietary_restrictions) > 0 then put 'dietary restrictions of ** <dietary_restrictions> **' else ' **zero dietary restrictions**'}, 
     specification for ** <number_of_servings> servings ** and ** <servings_per_day> serving per person per day **, these recipes have been chosen for you.
     
-    #### Breakfast
+    {if <meals> includes 'breakfast' then #### Breakfast
     
-    ##### Recipe: <some recipe> - <number_of_servings> servings
+    ##### Recipe: <breakfast recipe> - <number_of_servings> servings
     - list
     - of 
     - ingredients
     
     [Link to Recipe](allrecipes_url)
     
-    #### Lunch
+    ---}
     
-    ##### Recipe: <some recipe> - <number_of_servings> servings
+    {if <meals> includes 'lunch' then #### Lunch
+    
+    ##### Recipe: <lunch recipe> - <number_of_servings> servings
     - list
     - of 
     - ingredients
     
     [Link to Recipe](allrecipes_url)
+    
+    ---}
 
-    #### Dinner
+    {if <meals> includes 'dinner' then #### Dinner
     
-    ##### Recipe: <some recipe> - <number_of_servings> servings
+    ##### Recipe: <dinner recipe> - <number_of_servings> servings
     - list
     - of 
     - ingredients
     
     [Link to Recipe](allrecipes_url)
     
-    ### Grocery List
+    ---}
+    
+    
+
+    #### Grocery List
     - list
     - of
     - ingredients
     
 
-    Please note that the existing ingredients ** < for each existing_ingredients, list item > ** are already accounted for 
-    and should not be included in your shopping list. Enjoy your meals!
-    "
+    {if <existing_ingredients> exists then "Please note that the existing ingredients ** < for each existing_ingredients, list item > ** are already accounted for 
+    and should not be included in your shopping list."}
+    
+    ##### Enjoy your meals!
+    ```
     """
 
-def completionPrompt1(): 
+
+def completionPrompt1():
     return """
     You are a nutritionist that wants to ensure your client stays healthy and fed.
     You are going to prepare a meal plan for them according to their needs.
