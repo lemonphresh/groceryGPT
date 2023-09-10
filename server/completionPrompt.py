@@ -19,6 +19,7 @@ def completionPrompt2():
     # If the recipes have common ingredients between them, 
     # I will add up the amount my client should buy (amount_of_ingredient_to_buy).
 
+    # I will disregard any items <existing_ingredients> that are not related to food or cooking.
     # I will exclude every item in <existing_ingredients> from the grocery list.
     # I will exclude "salt and pepper" and "salt and pepper to taste" from the grocery list.
     # I will not consider case sensitivity when looking at the <existing_ingredients> to exclude.

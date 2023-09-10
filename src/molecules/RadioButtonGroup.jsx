@@ -7,7 +7,7 @@ import RadioButton from '../atoms/RadioButton';
 
 const RadioButtonGroup = ({ buttons, onChange, selectedBackgroundColor, selectedButton }) => {
   const { getRootProps, getRadioProps } = useRadioGroup({
-    defaultValue: selectedButton ? selectedButton.value : buttons[0].value,
+    defaultValue: selectedButton?.value,
     name: selectedButton ? selectedButton.text : buttons[0].text,
     onChange,
   });
@@ -18,7 +18,7 @@ const RadioButtonGroup = ({ buttons, onChange, selectedBackgroundColor, selected
     <Flex
       alignItems="center"
       flexWrap="wrap"
-      gridGap="20px"
+      gridGap="16px"
       justifyContent="center"
       maxWidth="100%"
       width="100%"
@@ -61,6 +61,6 @@ RadioButtonGroup.defaultProps = {
   buttons: [],
   // eslint-disable-next-line no-console
   onChange: console.log,
-  selectedBackgroundColor: theme.colors.green['400'],
+  selectedBackgroundColor: theme.colors.green['500'],
   selectedButton: undefined,
 };

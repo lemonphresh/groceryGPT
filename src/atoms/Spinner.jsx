@@ -5,7 +5,7 @@ import theme from '../theme';
 
 const sizes = {
   small: '12px',
-  med: theme.space.x16,
+  med: '16px',
   large: '20px',
 };
 
