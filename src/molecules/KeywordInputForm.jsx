@@ -116,7 +116,7 @@ const KeywordInputForm = ({
         </Text>
       </Flex>
 
-      <Flex maxWidth="500px">
+      <Flex maxWidth="500px" paddingX="8px">
         <KeywordChips keywords={keywords} onClickClose={onClearChip} />
       </Flex>
     </Flex>

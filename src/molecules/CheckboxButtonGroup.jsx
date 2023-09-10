@@ -22,7 +22,7 @@ const CheckboxButtonGroup = ({ buttons, onChange, selectedButtons }) => (
           key={uuid4()}
           marginLeft="8px"
           value={button.value}
-          width="110px"
+          width="125px"
           _focus={{
             outline: '1px blue solid',
           }}

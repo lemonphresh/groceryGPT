@@ -7,6 +7,7 @@
 
 - might want to add storybook because testing components sucks rn
 - export list to pdf? or print?
+- set up CI :(
 
 ### product ideas:
 

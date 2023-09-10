@@ -181,9 +181,11 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
           backgroundColor={theme.colors.red[500]}
           boxShadow="2px 2px 6px 0px rgba(0, 0, 0, 0.3)"
           margin="16px"
+          marginTop="32px"
           onClick={async () => {
             await onSubmit(JSON.stringify(mealPrepIntakeFormValues));
           }}
+          padding="24px"
           text="Generate Meal Plan"
         />
       </Flex>
