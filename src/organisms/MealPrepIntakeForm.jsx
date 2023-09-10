@@ -6,6 +6,8 @@ import { useMealPrepIntakeValues } from '../contexts/useMealPrepIntakeValues/use
 import CheckboxButtonGroup from '../molecules/CheckboxButtonGroup';
 import KeywordInputForm from '../molecules/KeywordInputForm';
 import { Button } from '../atoms';
+import CuttingBoard from '../assets/cuttingboard.jpeg';
+import theme from '../theme';
 
 // eslint-disable-next-line react/prop-types
 const FormSection = ({ children }) => (
@@ -41,13 +43,16 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
   return (
     <Flex
       alignItems="center"
-      backgroundImage="https://www.photos-public-domain.com/wp-content/uploads/2012/03/bamboo-cutting-board-texture.jpg"
+      backgroundImage={CuttingBoard}
       backgroundSize="contain"
       borderRadius={['0px', '24px']}
+      borderTop="8px solid #3d260a"
+      boxShadow="-3px 4px 8px 2px rgba(0, 0, 0, 0.7)"
       flexDirection="column"
       justifyContent="center"
-      maxWidth={['100%', '90vw']}
-      padding={['16px', '40px', '64px']}
+      marginY="24px"
+      maxWidth={['100%', '95vw', '90vw']}
+      padding={['16px', '24px', '40px', '64px']}
     >
       <Flex
         alignItems="center"
@@ -55,10 +60,21 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
         flexDirection="column"
         justifyContent="center"
         maxWidth="600px"
-        padding={['16px', '24px']}
+        padding={['12px', '16px', '24px']}
         width="100%"
       >
-        <Heading marginBottom="16px" marginTop={['16px', '24px']} size="md">
+        <Heading
+          backgroundSize={['auto', '1px 2.25rem']}
+          boxShadow={[
+            'none',
+            `inset 0 0.175em transparent, inset 0 -0.5em ${theme.colors.purple[200]}`,
+          ]}
+          marginBottom="16px"
+          marginTop={['16px', '24px']}
+          marginX={['8px', '0px', '16px']}
+          size="md"
+          style={{ hyphens: 'auto' }}
+        >
           Choose your cuisine:
         </Heading>
         <RadioButtonGroup
@@ -69,7 +85,18 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
           selectedButton={formData.cuisine[0]}
         />
 
-        <Heading marginBottom="16px" marginTop="24px" size="md">
+        <Heading
+          backgroundSize={['auto', '1px 2.25rem']}
+          boxShadow={[
+            'none',
+            `inset 0 0.175em transparent, inset 0 -0.5em ${theme.colors.green[200]}`,
+          ]}
+          marginBottom="16px"
+          marginTop="32px"
+          marginX={['8px', '0px', '16px']}
+          size="md"
+          style={{ hyphens: 'auto' }}
+        >
           Choose your meals:
         </Heading>
         <FormSection>
@@ -82,7 +109,18 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
           />
         </FormSection>
 
-        <Heading marginBottom="16px" marginTop="24px" size="md">
+        <Heading
+          backgroundSize={['auto', '1px 2.25rem']}
+          boxShadow={[
+            'none',
+            `inset 0 0.175em transparent, inset 0 -0.5em ${theme.colors.yellow[200]}`,
+          ]}
+          marginBottom="16px"
+          marginTop="32px"
+          marginX={['8px', '0px', '16px']}
+          size="md"
+          style={{ hyphens: 'auto' }}
+        >
           Select any dietary restrictions:
         </Heading>
         <FormSection>
@@ -94,7 +132,18 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
           />
         </FormSection>
 
-        <Heading marginBottom="16px" marginTop="24px" size="md">
+        <Heading
+          backgroundSize={['auto', '1px 2.25rem']}
+          boxShadow={[
+            'none',
+            `inset 0 0.175em transparent, inset 0 -0.5em ${theme.colors.pink[200]}`,
+          ]}
+          marginBottom="16px"
+          marginTop="32px"
+          marginX={['8px', '0px', '16px']}
+          size="md"
+          style={{ hyphens: 'auto' }}
+        >
           What ingredients do you already have?
         </Heading>
         <FormSection>
@@ -112,7 +161,7 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
           flexDirection="column"
           gridGap="8px"
           justifyContent="center"
-          marginTop="24px"
+          marginTop="32px"
           padding="8px"
           width={['100%', '80%']}
         >
@@ -129,11 +178,13 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
         </Flex>
 
         <Button
+          backgroundColor={theme.colors.red[500]}
+          boxShadow="2px 2px 6px 0px rgba(0, 0, 0, 0.3)"
           margin="16px"
           onClick={async () => {
             await onSubmit(JSON.stringify(mealPrepIntakeFormValues));
           }}
-          text="Click for meals"
+          text="Generate Meal Plan"
         />
       </Flex>
     </Flex>

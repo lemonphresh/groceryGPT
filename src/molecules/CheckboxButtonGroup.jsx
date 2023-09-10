@@ -17,9 +17,12 @@ const CheckboxButtonGroup = ({ buttons, onChange, selectedButtons }) => (
       {buttons.map((button) => (
         <Checkbox
           colorScheme="green"
+          display="inline-flex"
           iconColor={theme.colors.green[500]}
           key={uuid4()}
+          marginLeft="8px"
           value={button.value}
+          width="110px"
           _focus={{
             outline: '1px blue solid',
           }}

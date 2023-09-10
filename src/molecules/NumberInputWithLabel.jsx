@@ -8,7 +8,7 @@ const NumberInputWithLabel = ({ labelText, onChange, value }) => {
   const labelId = uuid4();
   return (
     <Flex alignItems="center" justifyContent="space-between" padding="8px" width="100%">
-      <FormLabel fontWeight="bold" id={labelId}>
+      <FormLabel fontWeight="bold" id={labelId} maxWidth={['130px', '175px']}>
         {labelText}
       </FormLabel>
       <NumberInput labelledBy={labelId} onChange={onChange} value={value} />

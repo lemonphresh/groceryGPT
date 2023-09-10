@@ -13,6 +13,7 @@ root.render(
         backgroundColor={theme.colors.gray[100]}
         color={theme.colors.gray[700]}
         flexDirection="column"
+        fontFamily={theme.fonts.body}
         width="100vw"
       >
         <TopContent />

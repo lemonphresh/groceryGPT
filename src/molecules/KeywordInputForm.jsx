@@ -103,8 +103,14 @@ const KeywordInputForm = ({
           <PlusSquareIcon boxSize={6} color={addIconColor} />
         </Flex>
       </Flex>
-      <Flex alignItems="center" marginLeft="16px">
-        <InfoIcon color={theme.colors.gray[500]} height="14px" width="14px" />
+      <Flex alignItems="center" marginX="16px">
+        <InfoIcon
+          alignSelf={['flex-start', undefined]}
+          color={theme.colors.gray[500]}
+          marginTop={['4px', undefined]}
+          height="14px"
+          width="14px"
+        />
         <Text color={theme.colors.gray[600]} fontSize="14px" marginLeft="8px">
           {helperText}
         </Text>
