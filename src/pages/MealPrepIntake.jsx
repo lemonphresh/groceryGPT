@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Flex, Heading, Image } from '@chakra-ui/react';
+import { Flex, Heading, Image, Link } from '@chakra-ui/react';
 import axios from 'axios';
 import theme from '../theme';
 import { MealPrepIntakeForm, MealPrepResponse } from '../organisms';
 import { MealPrepIntakeFormContextProvider } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
 import WoodenSpoon from '../assets/woodenspoon.png';
+import CrackedEgg from '../assets/cracked_egg.png';
 
 const App = () => {
   const [response, setResponse] = useState();
@@ -86,6 +87,35 @@ const App = () => {
           src={WoodenSpoon}
           width="100%"
         />
+        <Flex
+          alignItems="center"
+          flexDirection={['column-reverse', 'row']}
+          maxWidth={['100%', '95vw', '1000px']}
+          paddingX={['16px', '24px', '40px', '64px']}
+        >
+          <Image
+            alt="A cracked egg with the egg white and yolk spilling out."
+            height="150px"
+            src={CrackedEgg}
+          />
+          <Heading
+            alignItems="center"
+            fontFamily={theme.fonts.introText}
+            fontWeight="normal"
+            fontSize="18px"
+            justifyContent="center"
+            marginY={['24px', 'auto']}
+            size="md"
+          >
+            <span style={{ fontWeight: 'bold' }}>Disclaimer:</span> the robots do not always obey.
+            Please try again if the response seems a little goofy. If they are being particularly
+            unruly,{' '}
+            <Link color={theme.colors.blue[400]} href="mailto:lemon.tsx@gmail.com">
+              contact me
+            </Link>
+            .
+          </Heading>
+        </Flex>
       </Flex>
     </MealPrepIntakeFormContextProvider>
   );

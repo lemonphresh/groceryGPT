@@ -25,7 +25,7 @@ const MealPrepResponse = ({ error, loading, response }) => {
       flexDirection="column"
       id="meal-prep-response"
       marginY="24px"
-      maxWidth={['100%', '95vw', '1000px']}
+      maxWidth={['100%', '95vw', '85vw', '860px']}
       minHeight="90px"
       padding={['16px', '24px', '40px', '64px']}
       position="relative"
