@@ -1,2 +1,2 @@
-export { default as Footer } from './Footer';
+export { default as TopContent } from './TopContent';
 export { default as MealPrepIntakeForm } from './MealPrepIntakeForm';

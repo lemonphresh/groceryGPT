@@ -45,7 +45,13 @@ const App = () => {
 
   return (
     <MealPrepIntakeFormContextProvider>
-      <Flex flexDirection="column">
+      <Text>intro</Text>
+      <Flex
+        alignItems="center"
+        flexDirection="column"
+        justifyContent="center"
+        marginTop={['0px', '24px']}
+      >
         <MealPrepIntakeForm onSubmit={submitPrompts} />
         {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
         {loading && <Spinner />}
