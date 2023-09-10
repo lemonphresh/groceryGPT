@@ -12,7 +12,6 @@ const App = () => {
   const [error, setError] = useState();
 
   const submitPrompts = async (prompt) => {
-    console.log('it happenin');
     const resp = await axios
       .post(
         `${process.env.REACT_APP_SERVER_URL}/chat`,
