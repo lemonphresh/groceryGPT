@@ -6,7 +6,7 @@ import { MealPrepIntakeForm, MealPrepResponse } from '../organisms';
 import { MealPrepIntakeFormContextProvider } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
 import Egg from '../assets/friedegg.png';
 
-const App = () => {
+const MealPrepIntake = () => {
   const [response, setResponse] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -115,4 +115,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default MealPrepIntake;
