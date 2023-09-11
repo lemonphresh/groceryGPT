@@ -1,3 +1,5 @@
+This project is deployed on [Vercel](https://vercel.com) at [this location](https://grocery-gpt.vercel.app/).
+
 ## Get Started
 
 Run `npm i`.
