@@ -1,10 +1,13 @@
 import React from 'react';
 import { Flex, Heading, Image } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
-import { NumberInputWithLabel, RadioButtonGroup } from '../molecules';
+import {
+  CheckboxButtonGroup,
+  KeywordInputForm,
+  NumberInputWithLabel,
+  RadioButtonGroup,
+} from '../molecules';
 import { useMealPrepIntakeValues } from '../contexts/useMealPrepIntakeValues/useMealPrepIntakeValues';
-import CheckboxButtonGroup from '../molecules/CheckboxButtonGroup';
-import KeywordInputForm from '../molecules/KeywordInputForm';
 import { Button } from '../atoms';
 import CuttingBoard from '../assets/cuttingboard.jpeg';
 import theme from '../theme';
@@ -18,7 +21,7 @@ const FormSection = ({ children }) => (
   </Flex>
 );
 
-const MealPrepIntakeForm = ({ onSubmit }) => {
+const MealPrepIntakeForm = ({ loading, onSubmit }) => {
   const { mealPrepIntakeFormValues, setMealPrepIntakeFormValues, formData } =
     useMealPrepIntakeValues();
 
@@ -64,12 +67,14 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
         left={['-275px', '-375px', '-400px', '-450px']}
         maxWidth={['100%', '95vw', '800px']}
         paddingX={['16px', '24px', '40px', '64px']}
+        paddingY="24px"
         pointerEvents="none"
         position="absolute"
         top="20px"
         transform="rotate(116deg)"
         src={Rosemary}
         width="100%"
+        zIndex="1"
       />
       <Image
         alt="Wooden spoon"
@@ -212,10 +217,12 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
         <Button
           backgroundColor={theme.colors.red[500]}
           boxShadow="2px 2px 6px 0px rgba(0, 0, 0, 0.3)"
+          disabled={loading}
           margin="16px"
           marginTop="32px"
           onClick={async () => {
             await onSubmit(JSON.stringify(mealPrepIntakeFormValues));
+            document.getElementById('meal-prep-response').scrollIntoView();
           }}
           padding="24px"
           text="Generate Meal Plan"
@@ -228,9 +235,11 @@ const MealPrepIntakeForm = ({ onSubmit }) => {
 export default MealPrepIntakeForm;
 
 MealPrepIntakeForm.propTypes = {
+  loading: PropTypes.bool,
   onSubmit: PropTypes.func,
 };
 
 MealPrepIntakeForm.defaultProps = {
+  loading: false,
   onSubmit: () => {},
 };

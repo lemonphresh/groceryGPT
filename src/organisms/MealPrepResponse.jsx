@@ -35,9 +35,9 @@ const MealPrepResponse = ({ error, loading, response }) => {
       {!!error && <Text color={theme.colors.red['200']}>{error}</Text>}
       {loading === true && (
         <Flex alignSelf="center" gridGap="16px" justifySelf="center">
-          <CarrotSpinner />
-          <CarrotSpinner />
-          <CarrotSpinner />
+          <CarrotSpinner key="carrot1" />
+          <CarrotSpinner key="carrot2" />
+          <CarrotSpinner key="carrot3" />
         </Flex>
       )}
       {loading === false && !!response && (

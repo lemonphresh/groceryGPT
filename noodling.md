@@ -1,12 +1,10 @@
 ### to do:
 
-- make new markdown component w theme
--
+- domain name
 
 ### code ideas:
 
 - might want to add storybook because testing components sucks rn
-- export list to pdf? or print?
 - set up CI :(
 
 ### product ideas:
