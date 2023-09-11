@@ -77,7 +77,7 @@ Chips.defaultProps = {
   borderTop: `1px solid ${theme.colors.neutral20}`,
   chipHandler: () => null,
   clearAllBgColor: theme.colors.white,
-  clearAllColor: theme.colors.blue,
+  clearAllColor: theme.colors.blue['200'],
   onClickClearAll: undefined,
   paddingY: '8px',
 };

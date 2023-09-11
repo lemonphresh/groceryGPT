@@ -76,7 +76,7 @@ const App = () => {
             it for us.
           </Heading>
         </Flex>
-        <MealPrepIntakeForm onSubmit={handleSubmit} />
+        <MealPrepIntakeForm loading={loading} onSubmit={handleSubmit} />
         <MealPrepResponse error={error} loading={loading} response={response} />
         <Flex
           alignItems="center"
@@ -87,6 +87,7 @@ const App = () => {
           <Image
             alt="A sunny-side-up egg with gorgeous crispy edges and a rich yellow yolk."
             filter="drop-shadow(-2px 3px 8px rgba(0, 0, 0, 0.3))"
+            paddingY="16px"
             src={Egg}
             width={['200px', '275px', '325px']}
           />

@@ -1,6 +1,18 @@
+This project is deployed on [Vercel](https://vercel.com) at [this location](https://grocery-gpt.vercel.app/).
+
 ## Get Started
 
 Run `npm i`.
+
+This project is closely tied with [the project that contains the server](https://github.com/lemonphresh/groceryGPT_server). Head over there and get that running first. 
+
+You're gonna wanna generate your own [OpenAI](https://openai.com/) API key because I'm too poor to have a team one. You may have already done this if you followed my direct instructions by going and setting up the server project before carrying on with this one. If you haven't, how dare you. (It's fine, but you won't be able to do anything cool yet once you get this up and running.)
+
+When you have generated your own OpenAI API key, run `echo 'REACT_APP_OPENAI_API_KEY=[your_api_key]' > .env` in the root of the directory. 
+
+You'll also want to run `echo 'REACT_APP_SERVER_URL=http://localhost:5000' >> .env` after that.
+
+Carry on to the next steps.
 
 ## Available Scripts
 

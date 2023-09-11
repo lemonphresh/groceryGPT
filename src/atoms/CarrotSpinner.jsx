@@ -44,6 +44,7 @@ const CarrotSpinner = () => {
   const carrot = [
     <Box
       id="trapez2"
+      key="trapez2"
       sx={{
         width: '0px',
         height: '30px',
@@ -59,6 +60,7 @@ const CarrotSpinner = () => {
     />,
     <Box
       id="trapez1"
+      key="trapez1"
       sx={{
         width: '0px',
         height: '20px',
@@ -74,6 +76,7 @@ const CarrotSpinner = () => {
     />,
     <Box
       id="trapez0"
+      key="trapez0"
       sx={{
         width: '0px',
         height: '0px',

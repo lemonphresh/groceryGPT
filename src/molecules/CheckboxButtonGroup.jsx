@@ -62,13 +62,17 @@ CheckboxButtonGroup.propTypes = {
     })
   ),
   onChange: PropTypes.func,
-  selectedButtons: PropTypes.arrayOf(
-    PropTypes.shape({
-      selected: PropTypes.bool,
-      text: PropTypes.string,
-      value: PropTypes.string,
-    })
-  ),
+  selectedButtons: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        selected: PropTypes.bool,
+        text: PropTypes.string,
+        value: PropTypes.string,
+      })
+    ),
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.string,
+  ]),
 };
 
 CheckboxButtonGroup.defaultProps = {
