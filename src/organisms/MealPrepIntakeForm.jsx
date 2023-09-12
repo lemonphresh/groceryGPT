@@ -45,6 +45,28 @@ const MealPrepIntakeForm = ({ loading, onSubmit }) => {
     }
   };
 
+  const handleOnSubmit = async () => {
+    const ingredientInputValue = document.getElementById('ingredientInput').value;
+    let noDupes = [];
+    if (ingredientInputValue) {
+      const keywordArr = ingredientInputValue.split(',');
+      noDupes = [
+        ...new Set(
+          keywordArr
+            .map((i) => i.trim())
+            .filter((i) => !mealPrepIntakeFormValues.existing_ingredients.includes(i) && i !== '')
+        ),
+      ];
+    }
+    window.location.href = '#meal-prep-response';
+    await onSubmit(
+      JSON.stringify({
+        ...mealPrepIntakeFormValues,
+        existing_ingredients: [...mealPrepIntakeFormValues.existing_ingredients, ...noDupes],
+      })
+    );
+  };
+
   return (
     <Flex
       alignItems="center"
@@ -185,6 +207,7 @@ const MealPrepIntakeForm = ({ loading, onSubmit }) => {
         </Heading>
         <FormSection>
           <KeywordInputForm
+            inputId="ingredientInput"
             keywords={mealPrepIntakeFormValues.existing_ingredients}
             onAddKeyword={handleOnChange('existing_ingredients')}
             onRemoveKeyword={handleRemoveIngredient}
@@ -220,10 +243,7 @@ const MealPrepIntakeForm = ({ loading, onSubmit }) => {
           disabled={loading}
           margin="16px"
           marginTop="32px"
-          onClick={async () => {
-            await onSubmit(JSON.stringify(mealPrepIntakeFormValues));
-            document.getElementById('meal-prep-response').scrollIntoView();
-          }}
+          onClick={handleOnSubmit}
           padding="24px"
           text="Generate Meal Plan"
         />
