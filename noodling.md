@@ -1,11 +1,10 @@
 ### to do:
 
-- domain name
-
 ### code ideas:
 
 - might want to add storybook because testing components sucks rn
 - set up CI :(
+- xander-proof the ai
 
 ### product ideas:
 
