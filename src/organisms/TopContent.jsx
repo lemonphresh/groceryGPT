@@ -1,5 +1,6 @@
 import { Box, Flex, Image, Link, Text } from '@chakra-ui/react';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import SousChefLogo from '../atoms/SousChefLogo';
 import theme from '../theme';
 import Cashapp from '../assets/cashapp.png';
@@ -10,7 +11,7 @@ const TopContent = () => (
     backgroundColor={theme.colors.white}
     alignItems="center"
     justifyContent="space-between"
-    paddingX="32px"
+    paddingX={['16px', '32px']}
     paddingY="16px"
   >
     <Link alignItems="center" display="flex" href="https://cash.app/$lemonlikesgirls/5.00">
@@ -19,7 +20,9 @@ const TopContent = () => (
         donate
       </Text>
     </Link>
-    <SousChefLogo />
+    <NavLink to="/">
+      <SousChefLogo />
+    </NavLink>
     <Link alignItems="center" display="flex" href="https://www.linkedin.com/in/lemongarrett/">
       <Text display={['none', 'block']} marginRight="8px">
         meet me

@@ -1,4 +1,8 @@
-### to do:
+### to do for v2:
+
+- set up a new repo for database shit
+- add react router to this project :(
+- probably get oauth going
 
 - domain name
 
@@ -6,6 +10,8 @@
 
 - might want to add storybook because testing components sucks rn
 - set up CI :(
+- xander-proof the ai
+- change my email to another one so i dont get spammed probably
 
 ### product ideas:
 

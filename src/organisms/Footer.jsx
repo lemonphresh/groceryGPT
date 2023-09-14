@@ -10,9 +10,9 @@ const Footer = () => (
     backgroundColor={theme.colors.gray[200]}
     alignItems="center"
     justifyContent="space-between"
-    paddingX="32px"
+    paddingX={['16px', '32px']}
     paddingBottom="32px"
-    paddingTop="64px"
+    paddingTop={['32px', '64px']}
     marginTop="64px"
   >
     <Link alignItems="center" display="flex" href="https://github.com/lemonphresh/groceryGPT">
