@@ -14,7 +14,12 @@ const TopContent = () => (
     paddingX={['16px', '32px']}
     paddingY="16px"
   >
-    <Link alignItems="center" display="flex" href="https://cash.app/$lemonlikesgirls/5.00">
+    <Link
+      alignItems="center"
+      display="flex"
+      href="https://cash.app/$lemonlikesgirls/5.00"
+      target="_blank"
+    >
       <Image aria-hidden height={['40px', '20px']} src={Cashapp} width={['40px', '20px']} />
       <Text display={['none', 'block']} marginLeft="8px">
         donate
@@ -23,7 +28,12 @@ const TopContent = () => (
     <NavLink to="/">
       <SousChefLogo />
     </NavLink>
-    <Link alignItems="center" display="flex" href="https://www.linkedin.com/in/lemongarrett/">
+    <Link
+      alignItems="center"
+      display="flex"
+      href="https://www.linkedin.com/in/lemongarrett/"
+      target="_blank"
+    >
       <Text display={['none', 'block']} marginRight="8px">
         meet me
       </Text>

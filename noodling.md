@@ -4,8 +4,6 @@
 - add react router to this project :(
 - probably get oauth going
 
-- domain name
-
 ### code ideas:
 
 - might want to add storybook because testing components sucks rn

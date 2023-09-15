@@ -60,7 +60,7 @@ const MealPrepIntake = () => {
           marginBottom={['0px', '16px']}
           marginTop="16px"
           maxWidth="420px"
-          paddingX="8px"
+          paddingX="16px"
         >
           <Heading
             alignItems="center"
