@@ -15,7 +15,12 @@ const Footer = () => (
     paddingTop="64px"
     marginTop="64px"
   >
-    <Link alignItems="center" display="flex" href="https://github.com/lemonphresh/groceryGPT">
+    <Link
+      alignItems="center"
+      display="flex"
+      href="https://github.com/lemonphresh/groceryGPT"
+      target="_blank"
+    >
       <Text display={['none', 'block']} marginRight="8px">
         see code
       </Text>
@@ -30,7 +35,12 @@ const Footer = () => (
     <Box backgroundColor={theme.colors.white} paddingX="12px" paddingY="8px" borderRadius="45%">
       <SousChefLogo stackOnMobile={false} />
     </Box>
-    <Link alignItems="center" display="flex" href="https://cash.app/$lemonlikesgirls/5.00">
+    <Link
+      alignItems="center"
+      display="flex"
+      href="https://cash.app/$lemonlikesgirls/5.00"
+      target="_blank"
+    >
       <Box backgroundColor={theme.colors.white} borderRadius={['16px', '8px']}>
         <Image aria-hidden height={['44px', '28px']} src={Cashapp} width={['44px', '28px']} />
       </Box>
