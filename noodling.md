@@ -1,15 +1,18 @@
 ### to do for v2:
 
-- set up a new repo for database shit
-- add react router to this project :(
-- probably get oauth going
+x set up a new repo for database shit (grocery-graphql)
+x add react router to this project :(
+x probably get auth going
+
+- add keyboard interactions to register and login forms
+- add user pantry
+- add saving/deleting ingredients support
+- make the schema files on gql project less sad looking
 
 ### code ideas:
 
 - might want to add storybook because testing components sucks rn
 - set up CI :(
-- xander-proof the ai
-- change my email to another one so i dont get spammed probably
 
 ### product ideas:
 

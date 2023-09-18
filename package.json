@@ -10,6 +10,7 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/open-sans": "^5.0.12",
     "@fontsource/raleway": "^5.0.8",
+    "@fontsource/reenie-beanie": "^5.0.12",
     "@fontsource/roboto": "^5.0.8",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",

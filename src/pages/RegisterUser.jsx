@@ -24,7 +24,6 @@ const validateEmail = (email) => {
     return false;
   }
   return regex.isEmailValid(email);
-  // do regex to check email here too
 };
 
 const validatePasswords = (p1, p2) => p1 === p2;

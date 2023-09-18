@@ -3,6 +3,7 @@ import { Box, Heading, Link, UnorderedList } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import Markdown from '../atoms/Markdown';
 import theme from '../theme';
+import { DecorativeHeading } from '../atoms';
 
 const customTheme = {
   a: (props) => {
@@ -25,30 +26,9 @@ const customTheme = {
   h4: (props) => {
     const { children } = props;
     return (
-      <Heading
-        fontSize="24px"
-        fontWeight={theme.fontWeights.bold}
-        marginBottom="16px"
-        marginTop="30px"
-        paddingBottom="16px"
-        position="relative"
-        size="md"
-        width="fit-content"
-        zIndex={1}
-        _after={{
-          background: theme.colors.yellow[200],
-          bottom: '12px',
-          content: `""`,
-          height: '14px',
-          left: '70%',
-          position: 'absolute',
-          transform: 'skew(-12deg) translateX(-50%)',
-          width: '80%',
-          zIndex: -1,
-        }}
-      >
+      <DecorativeHeading fontSize="24px" size="md">
         {children}
-      </Heading>
+      </DecorativeHeading>
     );
   },
   h5: (props) => {

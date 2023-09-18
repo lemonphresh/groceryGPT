@@ -12,11 +12,12 @@ const NavBar = () => {
 
   return (
     <Flex
+      alignItems="center"
       backgroundColor={
         notOnAuthPage ||
         (state.user && !location.pathname.includes('/pantry/') && theme.colors.gray[200])
       }
-      alignItems="center"
+      display={location.pathname.includes('/pantry/') ? 'none' : 'flex'}
       justifyContent="flex-end"
       paddingX="32px"
       paddingY="16px"
@@ -31,7 +32,7 @@ const NavBar = () => {
         </NavLink>
       )}
       {state.user && !location.pathname.includes('/pantry/') && (
-        <NavLink to={`/pantry/${state.user.id}`}>Go to your pantry</NavLink>
+        <NavLink to={`/pantry/${state.user.id}/home`}>Go to your pantry</NavLink>
       )}
     </Flex>
   );
