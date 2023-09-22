@@ -3,6 +3,7 @@ const fonts = {
   introText: `'Raleway', sans-serif`,
   heading: `'Open Sans', sans-serif`,
   mono: 'Menlo, monospace',
+  handwriting: `'Reenie Beanie', cursive`,
 };
 
 const fontSizes = {

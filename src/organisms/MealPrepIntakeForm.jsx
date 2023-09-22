@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Flex, Heading, Image } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import {
   CheckboxButtonGroup,
   KeywordInputForm,
@@ -13,17 +14,46 @@ import CuttingBoard from '../assets/cuttingboard.jpeg';
 import theme from '../theme';
 import Rosemary from '../assets/rosemary.png';
 import WoodenSpoon from '../assets/woodenspoon.png';
+import { useAuth } from '../contexts/useAuth';
 
 // eslint-disable-next-line react/prop-types
 const FormSection = ({ children }) => (
-  <Flex backgroundColor="#ffffff8C" borderRadius="4px" padding="8px">
+  <Flex backgroundColor="#ffffff8C" borderRadius="4px" flexDirection="column" padding="8px">
     {children}
   </Flex>
 );
 
 const MealPrepIntakeForm = ({ loading, onSubmit }) => {
+  const { state } = useAuth();
   const { mealPrepIntakeFormValues, setMealPrepIntakeFormValues, formData } =
     useMealPrepIntakeValues();
+  const [userPantryList, setUserPantryList] = useState([]);
+  const [addToPantryButtonText, setAddToPantryButtonText] = useState(
+    'Add your pantry inventory to list'
+  );
+
+  useEffect(() => {
+    if (state.user) {
+      const getList = async () => {
+        const response = await axios.post(
+          `${process.env.REACT_APP_SERVER_URL}/get-user-ingredients`,
+          {
+            userId: state.user.id,
+          }
+        );
+
+        if (response.data.errors) {
+          throw new Error('We could not fetch your list! Please try again.');
+        }
+
+        if (response.data) {
+          setUserPantryList(response.data.map((item) => item.name));
+        }
+      };
+
+      getList();
+    }
+  }, []);
 
   const handleOnChange = (category) => (value) => {
     setMealPrepIntakeFormValues({
@@ -43,6 +73,28 @@ const MealPrepIntakeForm = ({ loading, onSubmit }) => {
         ),
       });
     }
+  };
+
+  const handleOnSubmit = async () => {
+    const ingredientInputValue = document.getElementById('ingredientInput').value;
+    let noDupes = [];
+    if (ingredientInputValue) {
+      const keywordArr = ingredientInputValue.split(',');
+      noDupes = [
+        ...new Set(
+          keywordArr
+            .map((i) => i.trim())
+            .filter((i) => !mealPrepIntakeFormValues.existing_ingredients.includes(i) && i !== '')
+        ),
+      ];
+    }
+    window.location.href = '#meal-prep-response';
+    await onSubmit(
+      JSON.stringify({
+        ...mealPrepIntakeFormValues,
+        existing_ingredients: [...mealPrepIntakeFormValues.existing_ingredients, ...noDupes],
+      })
+    );
   };
 
   return (
@@ -184,7 +236,26 @@ const MealPrepIntakeForm = ({ loading, onSubmit }) => {
           What ingredients do you already have?
         </Heading>
         <FormSection>
+          {state.user !== null && userPantryList.length > 0 && (
+            <Button
+              backgroundColor={theme.colors.blue[300]}
+              disabled={addToPantryButtonText === 'Added!'}
+              margin="4px"
+              onClick={() => {
+                setMealPrepIntakeFormValues({
+                  ...mealPrepIntakeFormValues,
+                  existing_ingredients: [
+                    ...mealPrepIntakeFormValues.existing_ingredients,
+                    ...userPantryList,
+                  ].sort(),
+                });
+                setAddToPantryButtonText('Added!');
+              }}
+              text={addToPantryButtonText}
+            />
+          )}
           <KeywordInputForm
+            inputId="ingredientInput"
             keywords={mealPrepIntakeFormValues.existing_ingredients}
             onAddKeyword={handleOnChange('existing_ingredients')}
             onRemoveKeyword={handleRemoveIngredient}
@@ -220,10 +291,7 @@ const MealPrepIntakeForm = ({ loading, onSubmit }) => {
           disabled={loading}
           margin="16px"
           marginTop="32px"
-          onClick={async () => {
-            await onSubmit(JSON.stringify(mealPrepIntakeFormValues));
-            document.getElementById('meal-prep-response').scrollIntoView();
-          }}
+          onClick={handleOnSubmit}
           padding="24px"
           text="Generate Meal Plan"
         />

@@ -1,9 +1,9 @@
 import { ChakraProvider, Flex } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { inject } from '@vercel/analytics';
+import { Outlet } from 'react-router-dom';
 import theme from './theme';
-import { Footer, TopContent } from './organisms';
-import MealPrepIntake from './pages/MealPrepIntake';
+import { Footer, NavBar, TopContent } from './organisms';
 
 const Root = () => {
   useEffect(() => {
@@ -17,10 +17,12 @@ const Root = () => {
         color={theme.colors.gray[700]}
         flexDirection="column"
         fontFamily={theme.fonts.body}
+        minHeight="100vh"
         width="100vw"
       >
         <TopContent />
-        <MealPrepIntake />
+        <NavBar />
+        <Outlet />
         <Footer />
       </Flex>
     </ChakraProvider>

@@ -1,9 +1,8 @@
-### to do:
-
-- domain name
+### to do for v2:
 
 ### code ideas:
 
+- make the schema files on gql project less sad looking
 - might want to add storybook because testing components sucks rn
 - set up CI :(
 

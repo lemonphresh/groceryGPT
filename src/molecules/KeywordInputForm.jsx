@@ -7,6 +7,7 @@ import KeywordChips from './KeywordChips';
 
 const KeywordInputForm = ({
   helperText,
+  inputId,
   keywords,
   keywordType,
   onAddKeyword,
@@ -14,7 +15,7 @@ const KeywordInputForm = ({
   placeholder,
 }) => {
   const [isTextFocused, setIsTextFocused] = useState(false);
-  const [textValue, setTextValue] = useState();
+  const [textValue, setTextValue] = useState('');
   const [addIconColor, setAddIconColor] = useState(theme.colors.gray[500]);
 
   const onAdd = () => {
@@ -30,7 +31,7 @@ const KeywordInputForm = ({
     ];
     setTextValue('');
     setAddIconColor(theme.colors.gray[500]);
-    onAddKeyword([...keywords, ...noDupes]);
+    onAddKeyword([...keywords, ...noDupes].sort());
   };
 
   const onTextChange = (e) => {
@@ -58,6 +59,7 @@ const KeywordInputForm = ({
       >
         <Input
           backgroundColor={theme.colors.orange[50]}
+          id={inputId}
           maxLength={100}
           onBlur={() => {
             setIsTextFocused(false);
@@ -127,6 +129,7 @@ export default KeywordInputForm;
 
 KeywordInputForm.propTypes = {
   helperText: PropTypes.string,
+  inputId: PropTypes.string,
   keywords: PropTypes.arrayOf(PropTypes.string),
   keywordType: PropTypes.string,
   onAddKeyword: PropTypes.func,
@@ -136,6 +139,7 @@ KeywordInputForm.propTypes = {
 
 KeywordInputForm.defaultProps = {
   helperText: 'Use commas to separate your ingredients, or add them one by one.',
+  inputId: 'keywordInput',
   keywords: [],
   keywordType: 'ingredient',
   onAddKeyword: () => {},
