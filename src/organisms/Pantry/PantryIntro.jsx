@@ -21,18 +21,19 @@ const PantryIntro = () => {
         filter="drop-shadow(-2px 4px 8px rgba(0, 0, 0, 0.3))"
         paddingX={['8px', '24px']}
         src={Pencil}
+        transform="rotate(-7deg)"
         width="100%"
       />
       <Heading marginBottom="32px" marginTop="64px" size="lg">
-        Welcome to your pantry, {state.user.username}!
+        Welcome to your pantry,{' '}
+        <span style={{ color: theme.colors.pink[600] }}>{state.user.username}</span>!
       </Heading>
       <Text>
         This is where you can{' '}
         <span style={{ fontWeight: theme.fontWeights.bold }}>keep track of ingredients</span>{' '}
         you&apos;ve got on hand by{' '}
-        <span style={{ fontWeight: theme.fontWeights.bold }}>adding</span> them,{' '}
-        <span style={{ fontWeight: theme.fontWeights.bold }}>editing</span> your existing list, or{' '}
-        <span style={{ fontWeight: theme.fontWeights.bold }}>clearing</span> it altogether.
+        <span style={{ fontWeight: theme.fontWeights.bold }}>adding</span> to or{' '}
+        <span style={{ fontWeight: theme.fontWeights.bold }}>editing</span> your existing inventory.
         You&apos;ll also be able to{' '}
         <span style={{ fontWeight: theme.fontWeights.bold }}>access all of your saved recipes</span>
         .
@@ -42,6 +43,7 @@ const PantryIntro = () => {
         filter="drop-shadow(-2px 4px 8px rgba(0, 0, 0, 0.3))"
         paddingX={['8px', '24px']}
         src={PencilShavings}
+        transform="rotate(7deg)"
         width="100%"
       />
     </Flex>

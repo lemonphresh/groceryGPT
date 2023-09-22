@@ -1,14 +1,8 @@
 ### to do for v2:
 
-- on mobile, the skinny menu up top at full width with accordions for pantry inventory and meal plans
-- on open mobile accordion, it'll show the lists for each respective thing
-
-- add keyboard interactions to register and login forms
-
-- make the schema files on gql project less sad looking
-
 ### code ideas:
 
+- make the schema files on gql project less sad looking
 - might want to add storybook because testing components sucks rn
 - set up CI :(
 

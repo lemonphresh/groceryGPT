@@ -1,5 +1,13 @@
 import React from 'react';
-import { ErrorPage, LoginUser, MealPrepIntake, NoMatch, RegisterUser, UserPantry } from './pages';
+import {
+  ErrorPage,
+  Faq,
+  LoginUser,
+  MealPrepIntake,
+  NoMatch,
+  RegisterUser,
+  UserPantry,
+} from './pages';
 import Root from './Root';
 import { EditInventory, EditRecipes, PantryIntro, ViewInventory, ViewRecipes } from './organisms';
 
@@ -22,6 +30,11 @@ const routes = [
       {
         path: '/register',
         element: <RegisterUser />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: '/faq',
+        element: <Faq />,
         errorElement: <ErrorPage />,
       },
       {

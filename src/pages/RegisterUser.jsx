@@ -18,6 +18,7 @@ import { useAuth } from '../contexts/useAuth';
 import { Button, CarrotSpinner } from '../atoms';
 import regex from '../utils/regex';
 import theme from '../theme';
+import useKeyboardInteractions from '../utils/useKeyboardInteractions';
 
 const validateEmail = (email) => {
   if (!!email && email.length === 0) {
@@ -43,6 +44,7 @@ const RegisterUser = () => {
   const [errors, setErrors] = useState([]);
   const [registerUserCb, setRegisterUserCb] = useState(null);
   const [res, setRes] = useState();
+  const { performActionOnEnterOrSpace } = useKeyboardInteractions();
 
   const { onChange, onSubmit, values } = useForm(registerUserCb, {
     username: null,
@@ -211,6 +213,7 @@ const RegisterUser = () => {
             disabled={!totalFormValidation(values)}
             marginTop="24px"
             onClick={onSubmit}
+            onKeyUp={(e) => performActionOnEnterOrSpace(e, onSubmit)}
             text="Register"
             width={['100%', '250px']}
           />

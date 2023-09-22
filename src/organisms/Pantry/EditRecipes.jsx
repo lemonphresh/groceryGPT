@@ -1,23 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  IconButton,
-  Image,
-  Link,
-  ListItem,
-  Text,
-  UnorderedList,
-} from '@chakra-ui/react';
+import { Flex, Heading, IconButton, Link, ListItem, Text, UnorderedList } from '@chakra-ui/react';
 import axios from 'axios';
 import { v4 as uuid4 } from 'uuid';
-import { DeleteIcon } from '@chakra-ui/icons';
+import { DeleteIcon, WarningIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/useAuth';
 import { CarrotSpinner } from '../../atoms';
 import theme from '../../theme';
-import MeasuringSpoons from '../../assets/measuringspoons.png';
 
 const EditRecipes = () => {
   const { state } = useAuth();
@@ -75,7 +64,7 @@ const EditRecipes = () => {
     >
       <Heading marginBottom="16px">Manage Recipes</Heading>
       <Text marginBottom="16px" marginX="8px">
-        What&apos;s cookin&apos; good lookin&apos;? View and manage your recipe list here.
+        What&apos;s cookin&apos; good lookin&apos;?
       </Text>
       {isLoading ? (
         <Flex alignSelf="center" gridGap="16px" justifySelf="center">
@@ -87,14 +76,15 @@ const EditRecipes = () => {
         <Flex alignItems="center" flexDirection="column" justifyContent="center">
           {list.length === 0 ? (
             <Flex alignItems="center" flexDirection="column" justifyContent="center" width="100%">
-              <Image
-                alt="A set of stainless steel measuring spoons."
-                filter="drop-shadow(-2px 3px 8px rgba(0, 0, 0, 0.3))"
-                src={MeasuringSpoons}
-                width={['175px', '250px']}
-              />
-              <Heading marginBottom="24px" marginTop={['32px', '48px']} size="lg">
-                Oh! You have no recipes saved.
+              <Heading
+                alignItems="center"
+                color={theme.colors.pink[600]}
+                display="flex"
+                marginBottom="16px"
+                size="sm"
+              >
+                <WarningIcon marginRight="8px" />
+                Looks like you haven&apos;t got any saved recipes.
               </Heading>
               <Text>
                 Start generating meal plans and saving recipes{' '}
@@ -119,19 +109,13 @@ const EditRecipes = () => {
                   <Link color={theme.colors.blue[500]} href={item.link} target="_blank">
                     {item.name}
                   </Link>
-                  <Box
-                    backgroundColor={theme.colors.gray[600]}
-                    display="inline-block"
-                    height="2px"
-                    marginBottom="4px"
-                    marginX="8px"
-                    width="8px"
-                  />
+
                   <IconButton
                     backgroundColor={theme.colors.gray[300]}
                     color={theme.colors.red[400]}
                     height="24px"
                     icon={<DeleteIcon />}
+                    marginLeft="8px"
                     minWidth="24px"
                     onClick={async () => {
                       await deleteRecipe(item.id);

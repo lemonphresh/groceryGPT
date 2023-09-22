@@ -1,4 +1,5 @@
 export { default as ErrorPage } from './ErrorPage';
+export { default as Faq } from './Faq';
 export { default as LoginUser } from './LoginUser';
 export { default as MealPrepIntake } from './MealPrepIntake';
 export { default as NoMatch } from './NoMatch';

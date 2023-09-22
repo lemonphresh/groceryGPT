@@ -136,6 +136,7 @@ const ViewInventory = () => {
                   <Heading
                     fontFamily={theme.fonts.handwriting}
                     lineHeight={paperFontLineHeight}
+                    marginTop={['32px', undefined]}
                     width="fit-content"
                   >
                     Pantry Inventory
@@ -149,6 +150,7 @@ const ViewInventory = () => {
                 <Image
                   aria-hidden
                   bottom="24px"
+                  display={['none', 'block']}
                   height="fit-content"
                   filter="opacity(80%)"
                   position="absolute"

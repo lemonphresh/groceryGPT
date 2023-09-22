@@ -123,8 +123,8 @@ const ViewRecipes = () => {
                   </Heading>
                   <UnorderedList marginLeft="48px" maxWidth="224px" width="fit-content">
                     {list.map((item) => (
-                      <ListItem color={theme.colors.blue[500]} key={uuid4()}>
-                        <Link href={item.link} target="_blank">
+                      <ListItem key={uuid4()}>
+                        <Link color={theme.colors.blue[500]} href={item.link} target="_blank">
                           {item.name}
                         </Link>
                       </ListItem>
@@ -134,6 +134,7 @@ const ViewRecipes = () => {
                 <Image
                   aria-hidden
                   bottom="24px"
+                  display={['none', 'block']}
                   height="fit-content"
                   filter="opacity(80%)"
                   position="absolute"

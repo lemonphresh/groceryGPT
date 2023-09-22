@@ -1,6 +1,7 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { ArrowForwardIcon } from '@chakra-ui/icons';
 import theme from '../theme';
 import { useAuth } from '../contexts/useAuth';
 import { Button } from '../atoms';
@@ -14,11 +15,17 @@ const NavBar = () => {
     <Flex
       alignItems="center"
       backgroundColor={
-        notOnAuthPage ||
-        (state.user && !location.pathname.includes('/pantry/') && theme.colors.gray[200])
+        notOnAuthPage || (state.user && !location.pathname.includes('/pantry/'))
+          ? theme.colors.green[200]
+          : 'transparent'
       }
+      boxShadow="-4px 4px 8px 2px rgba(0, 0, 0, 0.07)"
       display={location.pathname.includes('/pantry/') ? 'none' : 'flex'}
-      justifyContent="flex-end"
+      justifyContent={
+        notOnAuthPage || (state.user && !location.pathname.includes('/pantry/'))
+          ? 'center'
+          : 'flex-end'
+      }
       paddingX="32px"
       paddingY="16px"
     >
@@ -32,7 +39,11 @@ const NavBar = () => {
         </NavLink>
       )}
       {state.user && !location.pathname.includes('/pantry/') && (
-        <NavLink to={`/pantry/${state.user.id}/home`}>Go to your pantry</NavLink>
+        <NavLink to={`/pantry/${state.user.id}/home`}>
+          <Text fontWeight="bold" _hover={{ '*': { paddingLeft: '2px' } }}>
+            Go to pantry <ArrowForwardIcon />
+          </Text>
+        </NavLink>
       )}
     </Flex>
   );
