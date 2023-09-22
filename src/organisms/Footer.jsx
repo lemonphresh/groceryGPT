@@ -13,6 +13,7 @@ const Footer = () => (
     paddingX={['16px', '32px']}
     paddingBottom="32px"
     paddingTop={['32px', '64px']}
+    zIndex="4"
   >
     <Link
       alignItems="center"

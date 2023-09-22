@@ -1,37 +1,14 @@
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Image, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { Link, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { useAuth } from '../contexts/useAuth';
 import theme from '../theme';
 import { DecorativeHeading } from '../atoms';
-
-// - saved ingredients to start
-
-// 1. initialize activeIngList with list from db (getIngredientsByUser)
-// 2. use keyword input for it
-// 2.a. keep track of activeIngList then bulk update on submit (editUserIngredients)
-// 3. add clear all button (clearUserIngredients) (add a "are u sure" prompt)
-// 4. display all cute
-
-// - saved meal plans (not yet in graphql project)
-
-// 1. track list by dates in accordions
-// 2. be able to delete them from here
-
-// maybe on desktop do a two column display
-// on left, skinny menu, show "manage pantry inventory", "manage meal plans"
-// on right, display the stuff
-// on mobile, the skinny menu up top at full width with accordions for pantry inventory and meal plans
-// on open mobile accordion, it'll show the lists for each respective thing
-
-// after all this we'll want to add a button on the MealPrepIntakeForm to
-// prepopulate the existing ingredients list if they want
-
-// we will also want to add a "save to pantry" button for the meal plan
+import Spices from '../assets/spicespoons.png';
 
 const UserPantry = () => {
-  const { state } = useAuth();
+  const { logout, state } = useAuth();
   const navigate = useNavigate();
   const params = useParams();
   const location = useLocation();
@@ -73,7 +50,7 @@ const UserPantry = () => {
                   >
                     <ChevronLeftIcon boxSize="20px" />
                     <Text display="inline-block" marginLeft="8px">
-                      Go back
+                      Pantry Home
                     </Text>
                   </Flex>
                 </Link>
@@ -124,55 +101,53 @@ const UserPantry = () => {
                 </Text>
               </Link>
               <DecorativeHeading underlineColor={theme.colors.purple[200]}>
-                Meal Plans
+                Recipes
               </DecorativeHeading>
-              <Link to={`/pantry/${state.user.id}/meal-plans/view`}>
+              <Link to={`/pantry/${state.user.id}/recipes/view`}>
                 <Text
                   borderBottom={
-                    location.pathname.includes('meal-plans/view')
+                    location.pathname.includes('recipes/view')
                       ? `2px solid ${theme.colors.pink[400]}`
                       : 'none'
                   }
                   color={
-                    location.pathname.includes('meal-plans/view')
-                      ? theme.colors.pink[900]
-                      : 'inherit'
+                    location.pathname.includes('recipes/view') ? theme.colors.pink[900] : 'inherit'
                   }
-                  fontWeight={location.pathname.includes('meal-plans/view') ? 'bold' : 'normal'}
+                  fontWeight={location.pathname.includes('recipes/view') ? 'bold' : 'normal'}
                   marginBottom="8px"
                   width="fit-content"
                   _hover={{
                     fontWeight: 'bold',
                   }}
                 >
-                  View saved meal plans
+                  View saved recipes
                 </Text>
               </Link>
-              <Link to={`/pantry/${state.user.id}/meal-plans/edit`}>
+              <Link to={`/pantry/${state.user.id}/recipes/edit`}>
                 <Text
                   borderBottom={
-                    location.pathname.includes('meal-plans/edit')
+                    location.pathname.includes('recipes/edit')
                       ? `2px solid ${theme.colors.pink[400]}`
                       : 'none'
                   }
                   color={
-                    location.pathname.includes('meal-plans/edit')
-                      ? theme.colors.pink[900]
-                      : 'inherit'
+                    location.pathname.includes('recipes/edit') ? theme.colors.pink[900] : 'inherit'
                   }
-                  fontWeight={location.pathname.includes('meal-plans/edit') ? 'bold' : 'normal'}
+                  fontWeight={location.pathname.includes('recipes/edit') ? 'bold' : 'normal'}
                   width="fit-content"
                   _hover={{
                     fontWeight: 'bold',
                   }}
                 >
-                  Manage meal plans
+                  Manage recipes
                 </Text>
               </Link>
             </Flex>
-            <Flex display={['none', 'none', 'flex']} flexDirection="column">
+            <Flex display={['none', 'none', 'flex']} flexDirection="column" margin="16px">
               <Text marginBottom="8px">FAQ</Text>
-              <Text>Log Out</Text>
+              <Link onClick={logout} to="/">
+                Log Out
+              </Link>
             </Flex>
           </Flex>
           {/* right column on desktop, full width mobile */}
@@ -180,10 +155,18 @@ const UserPantry = () => {
             alignItems="center"
             flexDirection="column"
             height="100%"
-            padding="16px"
+            paddingTop="16px"
+            paddingX="16px"
             width="100%"
           >
             <Outlet />
+            <Image
+              aria-hidden
+              filter="drop-shadow(-2px 4px 8px rgba(0, 0, 0, 0.3))"
+              marginTop="32px"
+              src={Spices}
+              width="100%"
+            />
           </Flex>
         </Flex>
       </Flex>

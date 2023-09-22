@@ -12,11 +12,11 @@ const customTheme = {
       <Link
         color={theme.colors.red[400]}
         display="inline-flex"
-        fontSize="18px"
+        fontSize="20px"
         fontWeight={theme.fontWeights.bold}
         href={href}
-        marginLeft="16px"
-        paddingTop="8px"
+        marginX="8px"
+        target="_blank"
         textDecor="underline"
       >
         {children}

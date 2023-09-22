@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Flex, Heading } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/useAuth';
 import { KeywordInputForm } from '../../molecules';
 import { Button, CarrotSpinner } from '../../atoms';
+import theme from '../../theme';
 
 const EditInventory = () => {
   const { state } = useAuth();
@@ -59,15 +60,29 @@ const EditInventory = () => {
       }
     );
 
-    console.log(response);
     if (!response.errors && !!response) {
       navigate(`/pantry/${state.user.id}/inventory/view`);
     }
   };
 
   return (
-    <Flex alignItems="center" flex="1" flexDirection="column" marginTop="48px">
-      <Heading>Edit Inventory</Heading>
+    <Flex
+      alignItems="center"
+      backgroundColor={theme.colors.pink[50]}
+      borderRadius="14px"
+      boxShadow="-3px 4px 8px 2px rgba(0, 0, 0, 0.1)"
+      flex="1"
+      flexDirection="column"
+      marginY="48px"
+      maxWidth={['100%', '512px']}
+      padding="24px"
+      paddingY="32px"
+    >
+      <Heading marginBottom="16px">Edit Inventory</Heading>
+      <Text marginBottom="16px" marginX="8px">
+        Add what ingredients you&apos;ve got in your kitchen so you can keep track of them and add
+        them to the meal plan generator more easily.
+      </Text>
       {isLoading ? (
         <Flex alignSelf="center" gridGap="16px" justifySelf="center">
           <CarrotSpinner key="carrot1" />
@@ -83,7 +98,7 @@ const EditInventory = () => {
             onRemoveKeyword={handleRemoveIngredient}
           />
           <Button
-            marginTop="32px"
+            marginTop="24px"
             onClick={onSubmit}
             text="Update inventory"
             width={['100%', 'fit-content']}

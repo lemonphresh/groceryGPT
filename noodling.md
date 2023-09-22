@@ -1,12 +1,10 @@
 ### to do for v2:
 
-x set up a new repo for database shit (grocery-graphql)
-x add react router to this project :(
-x probably get auth going
+- on mobile, the skinny menu up top at full width with accordions for pantry inventory and meal plans
+- on open mobile accordion, it'll show the lists for each respective thing
 
 - add keyboard interactions to register and login forms
-- add user pantry
-- add saving/deleting ingredients support
+
 - make the schema files on gql project less sad looking
 
 ### code ideas:

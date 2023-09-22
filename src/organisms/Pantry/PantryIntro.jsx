@@ -34,10 +34,8 @@ const PantryIntro = () => {
         <span style={{ fontWeight: theme.fontWeights.bold }}>editing</span> your existing list, or{' '}
         <span style={{ fontWeight: theme.fontWeights.bold }}>clearing</span> it altogether.
         You&apos;ll also be able to{' '}
-        <span style={{ fontWeight: theme.fontWeights.bold }}>
-          access all of your saved meal plans
-        </span>
-        , organized by date saved.
+        <span style={{ fontWeight: theme.fontWeights.bold }}>access all of your saved recipes</span>
+        .
       </Text>
       <Image
         alt="A line of pencil shavings."

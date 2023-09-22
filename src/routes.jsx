@@ -1,13 +1,7 @@
 import React from 'react';
 import { ErrorPage, LoginUser, MealPrepIntake, NoMatch, RegisterUser, UserPantry } from './pages';
 import Root from './Root';
-import {
-  EditInventory,
-  EditMealPlans,
-  PantryIntro,
-  ViewInventory,
-  ViewMealPlans,
-} from './organisms';
+import { EditInventory, EditRecipes, PantryIntro, ViewInventory, ViewRecipes } from './organisms';
 
 const routes = [
   {
@@ -50,13 +44,13 @@ const routes = [
             errorElement: <ErrorPage />,
           },
           {
-            path: '/pantry/:userId/meal-plans/edit',
-            element: <EditMealPlans />,
+            path: '/pantry/:userId/recipes/edit',
+            element: <EditRecipes />,
             errorElement: <ErrorPage />,
           },
           {
-            path: '/pantry/:userId/meal-plans/view',
-            element: <ViewMealPlans />,
+            path: '/pantry/:userId/recipes/view',
+            element: <ViewRecipes />,
             errorElement: <ErrorPage />,
           },
         ],

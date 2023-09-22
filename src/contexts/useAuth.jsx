@@ -12,10 +12,13 @@ if (token) {
 
   if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem('token');
+    defaultAuthState.user = null;
   } else {
     defaultAuthState.user = decodedToken;
   }
 }
+
+console.log(defaultAuthState);
 
 const AuthContext = createContext({
   user: defaultAuthState.user,
