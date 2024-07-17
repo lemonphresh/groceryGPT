@@ -7,13 +7,14 @@ import GitHub from '../assets/github.png';
 
 const Footer = () => (
   <Flex
-    backgroundColor={theme.colors.gray[200]}
     alignItems="center"
+    backgroundColor={theme.colors.gray[200]}
+    boxShadow="-4px -4px 8px 2px rgba(0, 0, 0, 0.07)"
     justifyContent="space-between"
-    paddingX="32px"
+    paddingX={['16px', '32px']}
     paddingBottom="32px"
-    paddingTop="64px"
-    marginTop="64px"
+    paddingTop={['32px', '64px']}
+    zIndex="4"
   >
     <Link
       alignItems="center"
