@@ -52,6 +52,7 @@ const MealPrepIntake = () => {
         alignItems="center"
         flexDirection="column"
         justifyContent="center"
+        marginBottom="64px"
         marginTop={['0px', '24px']}
         overflow="hidden"
       >

@@ -31,7 +31,7 @@ const KeywordInputForm = ({
     ];
     setTextValue('');
     setAddIconColor(theme.colors.gray[500]);
-    onAddKeyword([...keywords, ...noDupes]);
+    onAddKeyword([...keywords, ...noDupes].sort());
   };
 
   const onTextChange = (e) => {

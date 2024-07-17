@@ -1,10 +1,12 @@
-### to do:
+### to do for v2:
+
+- need to refine prompt again
 
 ### code ideas:
 
+- make the schema files on gql project less sad looking
 - might want to add storybook because testing components sucks rn
 - set up CI :(
-- xander-proof the ai
 
 ### product ideas:
 
