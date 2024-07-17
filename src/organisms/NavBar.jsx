@@ -19,7 +19,10 @@ const NavBar = () => {
           ? theme.colors.green[200]
           : 'transparent'
       }
-      boxShadow="-4px 4px 8px 2px rgba(0, 0, 0, 0.07)"
+      boxShadow={
+        (notOnAuthPage || (state.user && !location.pathname.includes('/pantry/'))) &&
+        '-4px 4px 8px 2px rgba(0, 0, 0, 0.07)'
+      }
       display={location.pathname.includes('/pantry/') ? 'none' : 'flex'}
       justifyContent={
         notOnAuthPage || (state.user && !location.pathname.includes('/pantry/'))

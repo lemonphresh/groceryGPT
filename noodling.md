@@ -1,5 +1,7 @@
 ### to do for v2:
 
+- need to refine prompt again
+
 ### code ideas:
 
 - make the schema files on gql project less sad looking

@@ -21,7 +21,7 @@ const MealPrepResponse = ({ error, loading, response }) => {
   const todaysDate = new Date(Date.now()).toLocaleString().split(', ')[0].replaceAll('/', '-');
   const generatePDF = () => {
     const report = new JsPDF('landscape', 'pt', 'a4');
-    report.html(document.querySelector('#meal-prep-response')).then(() => {
+    report.html(document.querySelector('#meal-prep-response-text')).then(() => {
       report.save(`meal_plan-${todaysDate}.pdf`);
     });
   };
@@ -74,6 +74,7 @@ const MealPrepResponse = ({ error, loading, response }) => {
         boxShadow={!loading && '-3px 4px 8px 2px rgba(0, 0, 0, 0.2)'}
         display={!!error || !!loading || !!response ? 'flex' : 'none'}
         flexDirection="column"
+        id="meal-prep-response-text"
         marginBottom="48px"
         marginTop="96px"
         maxWidth={['100%', '95vw', '85vw', '860px']}
@@ -176,6 +177,7 @@ const MealPrepResponse = ({ error, loading, response }) => {
                       <Link
                         color={theme.colors.blue[400]}
                         href={recipe.link}
+                        target="_blank"
                         textDecoration="underline"
                       >
                         {recipe.name}

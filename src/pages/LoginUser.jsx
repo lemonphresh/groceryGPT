@@ -17,7 +17,6 @@ import { useAuth } from '../contexts/useAuth';
 import { Button } from '../atoms';
 import regex from '../utils/regex';
 import theme from '../theme';
-import useKeyboardInteractions from '../utils/useKeyboardInteractions';
 
 const validateEmail = (email) => {
   if (!!email && email.length === 0) {
@@ -26,12 +25,13 @@ const validateEmail = (email) => {
   return regex.isEmailValid(email);
 };
 
+const validatePassword = (pass) => !!pass && pass.length >= 7;
+
 const LoginUser = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
   const [loginUserCb, setLoginUserCb] = useState(null);
-  const { performActionOnEnterOrSpace } = useKeyboardInteractions();
 
   const { onChange, onSubmit, values } = useForm(loginUserCb, {
     email: null,
@@ -126,10 +126,9 @@ const LoginUser = () => {
           </FormControl>
           <Button
             alignSelf="center"
-            disabled={!validateEmail(values.email) && values.password?.length > 0}
+            disabled={!validateEmail(values.email) || !validatePassword(values.password)}
             marginTop="24px"
             onClick={onSubmit}
-            onKeyUp={(e) => performActionOnEnterOrSpace(e, onSubmit)}
             text="Log In"
             width={['100%', '250px']}
           />

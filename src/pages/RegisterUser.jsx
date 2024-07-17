@@ -18,7 +18,6 @@ import { useAuth } from '../contexts/useAuth';
 import { Button, CarrotSpinner } from '../atoms';
 import regex from '../utils/regex';
 import theme from '../theme';
-import useKeyboardInteractions from '../utils/useKeyboardInteractions';
 
 const validateEmail = (email) => {
   if (!!email && email.length === 0) {
@@ -44,7 +43,6 @@ const RegisterUser = () => {
   const [errors, setErrors] = useState([]);
   const [registerUserCb, setRegisterUserCb] = useState(null);
   const [res, setRes] = useState();
-  const { performActionOnEnterOrSpace } = useKeyboardInteractions();
 
   const { onChange, onSubmit, values } = useForm(registerUserCb, {
     username: null,
@@ -108,6 +106,22 @@ const RegisterUser = () => {
           }}
         >
           <Heading>Get started</Heading>
+          <Text>
+            Already have an account?{' '}
+            <NavLink to="/login">
+              <span style={{ color: theme.colors.blue[400], textDecoration: 'underline' }}>
+                Log in here
+              </span>
+              .
+            </NavLink>
+          </Text>
+          <Flex
+            backgroundColor={theme.colors.gray[300]}
+            height="2px"
+            marginBottom="24px"
+            width="100%"
+          />
+
           {errors.map((error) => (
             <Alert
               backgroundColor={theme.colors.pink[100]}
@@ -213,23 +227,10 @@ const RegisterUser = () => {
             disabled={!totalFormValidation(values)}
             marginTop="24px"
             onClick={onSubmit}
-            onKeyUp={(e) => performActionOnEnterOrSpace(e, onSubmit)}
             text="Register"
             width={['100%', '250px']}
           />
         </form>
-
-        <Flex backgroundColor={theme.colors.gray[300]} height="2px" marginTop="24px" width="100%" />
-
-        <Text marginTop="16px">
-          Already have an account?{' '}
-          <NavLink to="/login">
-            <span style={{ color: theme.colors.blue[400], textDecoration: 'underline' }}>
-              Log in here
-            </span>
-            .
-          </NavLink>
-        </Text>
       </Flex>
     </Flex>
   );

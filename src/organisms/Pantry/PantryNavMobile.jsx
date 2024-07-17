@@ -65,7 +65,7 @@ const PantryNavMobile = () => {
             </AccordionButton>
             <AccordionPanel
               alignItems="center"
-              backgroundColor={theme.colors.pink[200]}
+              backgroundColor={theme.colors.white}
               display="flex"
               flexDirection="column"
               justifyContent="center"
@@ -129,7 +129,7 @@ const PantryNavMobile = () => {
             </AccordionButton>
             <AccordionPanel
               alignItems="center"
-              backgroundColor={theme.colors.pink[200]}
+              backgroundColor={theme.colors.white}
               display="flex"
               flexDirection="column"
               justifyContent="center"

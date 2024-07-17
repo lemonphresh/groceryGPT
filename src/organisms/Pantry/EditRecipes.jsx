@@ -64,7 +64,7 @@ const EditRecipes = () => {
     >
       <Heading marginBottom="16px">Manage Recipes</Heading>
       <Text marginBottom="16px" marginX="8px">
-        What&apos;s cookin&apos; good lookin&apos;?
+        What&apos;s cookin&apos;, good lookin&apos;?
       </Text>
       {isLoading ? (
         <Flex alignSelf="center" gridGap="16px" justifySelf="center">
